@@ -4,25 +4,19 @@
     <section class="hero">
         <div class="container hero__container">
             <div class="hero__offer">
-                <h1 class="hero__title">
-                    John Doe
-                </h1>
-                <p class="hero__desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor magna risus sed. Et dictumst vel.
-                </p>
-                <a href="#" class="btn hero__btn">Free Seo Consulting Training</a>
+                <?php the_content(); ?>
             </div>
-            <div class="hero__img"></div>
+            <div class="hero__img" style="background-image: url( '<?php echo get_the_post_thumbnail_url() ?>' )"></div>
         </div>
     </section>
     <section class="superstar">
         <div class="container superstar__container">
             <div class="superstar__content">
-                <h2 class="superstar__title">Superstar SEO</h2>
+                <h2 class="superstar__title"><?php the_field( 'superstar_title' ); ?></h2>
                 <p class="superstar__desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam amet, platea diam rhoncus, sem tortor, turpis ac tincidunt. Nisi adipiscing a suspendisse justo eleifend volutpat et vitae ac. Consequat in mi iaculis hendrerit mauris mattis. Lacus risus amet at magna urna. Felis nec orci a, quis nullam vel sem nunc enim. Sit mi tellus eget commodo augue.
+                    <?php the_field( 'superstar_description' ); ?>
                 </p>
-                <a href="#" class="btn superstar__btn">Learn More</a>
+                <a href="<?php the_field( 'superstar_link_button' ); ?>" class="btn superstar__btn" target="_blank"><?php the_field( 'superstar_text_button' ); ?></a>
             </div>
         </div>
     </section>
@@ -60,7 +54,8 @@
 
             <?php $reviews = new WP_Query( array(
 				'post_type' => 'reviews',
-				'posts_per_page' => -1, 
+				'posts_per_page' => -1,
+                'order' => 'ASC',
 			));
 
             if ( $reviews->have_posts() ) :
@@ -70,14 +65,14 @@
             ?>
                 <div class="swiper-slide slider__item">
                     <div class="slider__img">
-                        <img src="img/slide-1.png" alt="slide">
+                        <?php the_post_thumbnail(); ?>
                     </div>
                     <div class="slider__content">
                         <p class="slider__text">
-                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim.“
+                            <?php echo get_the_content(); ?>
                         </p>
-                        <p class="slider__name">Frank Hardy</p>
-                        <p class="slider__position">Your Marketing Crew CEO</p>
+                        <p class="slider__name"><?php echo get_the_title(); ?></p>
+                        <p class="slider__position"><?php echo get_the_excerpt(); ?></p>
                     </div>
                 </div>
             <?php endwhile;
@@ -92,7 +87,7 @@
     <section class="shape">
         <div class="container shape__container">
             <div class="shape__content">
-                <h2 class="shape__title">Get in Touch</h2>
+                <h2 class="shape__title"><?php the_field( 'shape_title' ); ?></h2>
                 <div class="shape__info">
                     <a href="mailto:#" class="shape__mail">hello@domainexample.com</a>
                     <address class="shape__address">237 Haylee Islands Suite 960</address>
@@ -103,7 +98,7 @@
                     <input type="text" name="name" class="shape__input" placeholder="Name">
                     <input type="email" name="mail" class="shape__input" placeholder="Email">
                     <textarea name="message" id="" cols="30" rows="10" class="shape__message" placeholder="Write something..."></textarea>
-                    <button type="submit" class="btn shape__btn">Submit Message</button>
+                    <button type="submit" class="btn shape__btn"><?php the_field( 'shape_button_text' ); ?></button>
                 </form>
             </div>
         </div>

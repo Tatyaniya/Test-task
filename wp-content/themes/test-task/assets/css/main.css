@@ -94,7 +94,7 @@ h1, h2 {
     margin: 0;
 }
 
-h1.hero__title {
+.hero__offer h1 {
     font-size: 90px;
     line-height: 106px;
     margin: 0 0 10px;
@@ -120,7 +120,8 @@ h2 {
     padding-right: 15px;
 }
 
-.btn {
+.btn,
+.wp-block-button__link {
     font-size: 16px;
     line-height: 19px;
     color: #fff;
@@ -135,12 +136,15 @@ h2 {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover,
+.wp-block-button__link:hover {
     background: #3B7A64;
     box-shadow: 0 0 0 4px #3B7A64;
 }
 
 .btn:focus,
+.wp-block-button__link:focus,
+.wp-block-button__link:active,
 .btn:active {
     box-shadow: 0 0 0 4px rgba(105, 174, 150, 0.4), 0 0 0 2px #3B7A64 inset;
 }
@@ -212,7 +216,7 @@ h2 {
     padding-top: 240px;
 }
 
-.hero__desc {
+.hero__offer p {
     width: 544px; 
     font-size: 20px;
     font-weight: 300;
@@ -220,7 +224,8 @@ h2 {
     margin-bottom: 40px;
 }
 
-.hero__btn {
+.hero__btn,
+.wp-block-button__link {
     position: relative;
     z-index: 3;
 }
@@ -228,7 +233,8 @@ h2 {
 .hero__img {
     width: 790px;
     height: 1135px;
-    background: url('../img/Man_Img.png') no-repeat top center;
+    background-position: top center;
+    background-repeat: no-repeat;
     margin-right: -94px;
 }
 
