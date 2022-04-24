@@ -95,11 +95,11 @@
                 ?>
             </div>
             <div class="shape__form">
-                <form action="#">
+                <form action="submit.php" class="submit-form" id="popupResult">
                     <input type="text" name="name" class="shape__input" placeholder="Name">
-                    <input type="email" name="mail" class="shape__input" placeholder="Email">
+                    <input type="email" name="email" class="shape__input" placeholder="Email">
                     <textarea name="message" id="" cols="30" rows="10" class="shape__message" placeholder="Write something..."></textarea>
-                    <button type="submit" class="btn shape__btn"><?php the_field( 'shape_button_text' ); ?></button>
+                    <button data-submit class="btn shape__btn"><?php the_field( 'shape_button_text' ); ?></button>
                 </form>
             </div>
         </div>

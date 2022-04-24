@@ -22,6 +22,16 @@
         </footer>
     </div>
 
+	<div id="loader">
+		<img src="<?php echo get_template_directory_uri() ?>/assets/img/ripple.svg">
+	</div>
+
+	<div id="overlay">
+		<div id="thx">
+            <?php the_field( 'form_submission_message' ); ?>
+		</div>
+   	</div>
+
     <?php wp_footer(); ?>
 
 </body>

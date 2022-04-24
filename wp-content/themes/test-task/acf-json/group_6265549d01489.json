@@ -1,6 +1,6 @@
 {
     "key": "group_6265549d01489",
-    "title": "Section Superstar",
+    "title": "Home page",
     "fields": [
         {
             "key": "field_626554a93ab1c",
@@ -144,6 +144,41 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_62657a2781e9d",
+            "label": "Message submit",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_62657a3e81e9e",
+            "label": "Form submission message",
+            "name": "form_submission_message",
+            "type": "textarea",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -164,5 +199,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1650808765
+    "modified": 1650817634
 }

@@ -20,3 +20,95 @@ const swiper = new Swiper('.swiper', {
         },
       }
 });
+
+$(document).ready(function() {
+
+    $('[data-submit]').on('click', function(e) {
+        e.preventDefault();
+        $(this).parent('form').submit();
+    })
+    $.validator.addMethod(
+        "regex",
+        function(value, element, regexp) {
+            var re = new RegExp(regexp);
+            return this.optional(element) || re.test(value);
+        },
+        "Please check your input."
+    );
+
+    function valEl(el) {
+
+        el.validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                message: {
+                    required: true
+                }
+            },
+            messages: {
+                name: {
+                    required: 'Required field',
+                },
+                email: {
+                    required: 'Required field',
+                    email: 'Invalid email format'
+                },
+                message: {
+                    required: 'Required field',
+                },
+            },
+
+            // Начинаем проверку id="" формы
+            submitHandler: function(form) {
+                $('#loader').fadeIn();
+                var $form = $(form);
+                var $formId = $(form).attr('id');
+                switch ($formId) {
+                    case 'goToNewPage':
+                        $.ajax({
+                                type: 'POST',
+                                url: $form.attr('action'),
+                                data: $form.serialize(),
+                            })
+                            .always(function(response) {
+                                location.href = '';
+                                ga('send', 'event', 'masterklass7', 'register');
+                                yaCounter27714603.reachGoal('lm17lead');
+                            });
+                        break;
+                    case 'popupResult':
+                        $.ajax({
+                                type: 'POST',
+                                url: $form.attr('action'),
+                                data: $form.serialize(),
+                            })
+                            .always(function(response) {
+                                setTimeout(function() {
+                                    $('#loader').fadeOut();
+                                }, 800);
+                                setTimeout(function() {
+                                    $('#overlay').fadeIn();
+                                    $form.trigger('reset');
+                                }, 1100);
+                                $('#overlay').on('click', function(e) {
+                                    $(this).fadeOut();
+                                });
+                            });
+                        break;
+                }
+                return false;
+            }
+        })
+    }
+
+    $('.submit-form').each(function() {
+        valEl($(this));
+    });
+    
+});
