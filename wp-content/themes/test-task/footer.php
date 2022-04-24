@@ -12,7 +12,11 @@
                 ?>
 
                 <div class="copyright">
-                    Copyright © 2021 All right reserved
+                    <?php
+                        if ( function_exists('dynamic_sidebar') ) {
+                            dynamic_sidebar('tt_copyright');
+                        }
+                    ?>
                 </div>
             </div>
         </footer>

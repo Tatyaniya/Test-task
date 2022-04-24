@@ -1,5 +1,7 @@
 <?php
 
+require_once( __DIR__ . '/inc/' . 'widget-contacts.php' );
+
 add_action( 'wp_enqueue_scripts', 'tt_scripts' );
 
 function tt_scripts() {
@@ -16,8 +18,10 @@ register_nav_menus( array(
     'menu-footer' => 'Footer menu',
 ) );
 
+// Add post thumbnails
 add_theme_support( 'post-thumbnails' );
 
+// Custom logo
 add_action( 'after_setup_theme', 'tt_custom_logo_setup' );
 
 function tt_custom_logo_setup() {
@@ -33,16 +37,41 @@ function tt_custom_logo_setup() {
     add_theme_support( 'custom-logo', $defaults );
 }
 
-register_sidebar( array(
-    'name'          => 'Footer Widget',
-    'id'            => 'tt_footer',
-    'description'   => 'Footer section',
-    'before_widget' => '<div class="tt-footer-widget">',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h2>',
-    'after_title'   => '</h2>',
-) );
+// Widgets
+add_action( 'widgets_init', 'register_si_widgets' );
 
+function register_si_widgets() {
+
+    register_sidebar( array(
+        'name'          => 'Footer Widget',
+        'id'            => 'tt_footer',
+        'description'   => 'Footer section',
+        'before_widget' => '<div class="tt-footer-widget">',
+        'after_widget'  => '</div>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => 'Footer Copyright',
+        'id'            => 'tt_copyright',
+        'description'   => 'Footer section',
+        'class'         => '',
+        'before_widget' => null,
+        'after_widget'  => null,
+    ) );
+
+    register_sidebar( array(
+        'name'          => 'Contacts',
+        'id'            => 'tt_contacts',
+        'description'   => 'Shape section',
+        'class'         => '',
+        'before_widget' => null,
+        'after_widget'  => null,
+    ) );
+
+    register_widget( 'tt_widget_contacts' );
+}
+
+// Register custom post type
 add_action( 'init', 'tt_register_types' );
 
 function tt_register_types() {

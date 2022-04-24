@@ -88,10 +88,11 @@
         <div class="container shape__container">
             <div class="shape__content">
                 <h2 class="shape__title"><?php the_field( 'shape_title' ); ?></h2>
-                <div class="shape__info">
-                    <a href="mailto:#" class="shape__mail">hello@domainexample.com</a>
-                    <address class="shape__address">237 Haylee Islands Suite 960</address>
-                </div>
+                <?php
+                    if ( function_exists('dynamic_sidebar') ) {
+                        dynamic_sidebar('tt_contacts');
+                    }                        
+                ?>
             </div>
             <div class="shape__form">
                 <form action="#">
