@@ -15,7 +15,6 @@ $subject = 'Letter from ' . $name ?? '';
 $message = htmlspecialchars($_POST["message"]) ?? '';
 
 $headers = array(
-	'From: Me Myself' . $refferer,
 	'content-type: text/html',
 );
 
@@ -27,6 +26,6 @@ $message_to_email = "
     Source: $refferer
 ";
 
-wp_mail( $admin_email , $subject , $message_to_email ,  $headers  =  '' , $attachments  =  array() );
+wp_mail( $admin_email , $subject , $message_to_email ,  $headers  =  '' , $attachments  =  array() ));
 
 ?>

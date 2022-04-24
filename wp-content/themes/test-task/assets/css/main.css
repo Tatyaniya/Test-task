@@ -191,6 +191,89 @@ h2 {
     margin-right: 53px;
 }
 
+.menu-item {
+    position: relative;
+}
+
+.menu-item .sub-menu {
+    padding: 25px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    position: absolute;
+    top: 130%;
+    left: -20px;
+    z-index: 20;
+    display: none;
+}
+
+.menu__list>.menu-item>.sub-menu:before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -24px;
+    border: 12px solid transparent;
+    border-bottom: 12px solid #fff;
+    display: none;
+}
+
+.menu-item .sub-menu .sub-menu {
+    position: absolute;
+    top: -20px;
+    left: 150%;
+    z-index: 20;
+    display: none;
+}
+
+.menu-item .sub-menu .sub-menu:before {
+    content: "";
+    position: absolute;
+    left: -24px;
+    top: 22px;
+    border: 12px solid transparent;
+    border-right: 12px solid #fff;
+    display: none;
+}
+
+.menu-item .sub-menu .sub-menu:after {
+    content: "";
+    position: absolute;
+    left: -48px;
+    top: 0;
+    width: 50px;
+    height: 100%;
+}
+
+.menu__list > li:hover > .sub-menu {
+    display: block;
+}
+
+.menu__list > li:hover > .sub-menu:before {
+    display: block;
+}
+
+.menu__list .sub-menu > li:hover .sub-menu {
+    display: block;
+}
+
+.menu__list .sub-menu > li:hover .sub-menu:before {
+    display: block;
+}
+
+
+
+.sub-menu .menu-item {
+    margin: 0;
+}
+
+.sub-menu .menu-item a {
+    width: max-content;
+}
+
 .hero {
     position: relative;
     overflow-x: hidden;

@@ -23,7 +23,7 @@
     </div>
 
 	<div id="loader">
-		<img src="<?php echo get_template_directory_uri() ?>/assets/img/ripple.svg">
+		<img src="<?php echo get_template_directory_uri() ?>/assets/img/ripple.svg" alt="ripple">
 	</div>
 
 	<div id="overlay">
