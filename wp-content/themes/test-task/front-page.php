@@ -95,7 +95,7 @@
                 ?>
             </div>
             <div class="shape__form">
-                <form action="submit.php" class="submit-form" id="popupResult">
+                <form action="<?php echo get_template_directory_uri() ?>/submit.php" class="submit-form" id="popupResult" method="POST">
                     <input type="text" name="name" class="shape__input" placeholder="Name">
                     <input type="email" name="email" class="shape__input" placeholder="Email">
                     <textarea name="message" cols="30" rows="10" class="shape__message" placeholder="Write something..."></textarea>

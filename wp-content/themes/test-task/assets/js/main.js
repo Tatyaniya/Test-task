@@ -64,45 +64,27 @@ $(document).ready(function() {
                 },
             },
 
-            // Начинаем проверку id="" формы
             submitHandler: function(form) {
                 $('#loader').fadeIn();
                 var $form = $(form);
-                var $formId = $(form).attr('id');
-                switch ($formId) {
-                    case 'goToNewPage':
-                        $.ajax({
-                                type: 'POST',
-                                url: $form.attr('action'),
-                                data: $form.serialize(),
-                            })
-                            .always(function(response) {
-                                location.href = '';
-                                ga('send', 'event', 'masterklass7', 'register');
-                                yaCounter27714603.reachGoal('lm17lead');
-                            });
-                        break;
-                    case 'popupResult':
-                        $.ajax({
-                                type: 'POST',
-                                url: $form.attr('action'),
-                                data: $form.serialize(),
-                            })
-                            .always(function(response) {
-                                setTimeout(function() {
-                                    $('#loader').fadeOut();
-                                }, 800);
-                                setTimeout(function() {
-                                    $('#overlay').fadeIn();
-                                    $form.trigger('reset');
-                                }, 1100);
-                                $('#overlay').on('click', function(e) {
-                                    $(this).fadeOut();
-                                });
-                            });
-                        break;
-                }
-                return false;
+
+                $.ajax({
+                    type: 'POST',
+                    url: $form.attr('action'),
+                    data: $form.serialize(),
+                })
+                .always(function(response) {
+                    setTimeout(function() {
+                        $('#loader').fadeOut();
+                    }, 800);
+                    setTimeout(function() {
+                        $('#overlay').fadeIn();
+                        $form.trigger('reset');
+                    }, 1100);
+                    $('#overlay').on('click', function(e) {
+                        $(this).fadeOut();
+                    });
+                });
             }
         })
     }
