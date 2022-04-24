@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
-    <div class="hero">
+<main class="main">
+    <section class="hero">
         <div class="container hero__container">
             <div class="hero__offer">
                 <h1 class="hero__title">
@@ -13,8 +14,8 @@
             </div>
             <div class="hero__img"></div>
         </div>
-    </div>
-    <div class="superstar">
+    </section>
+    <section class="superstar">
         <div class="container superstar__container">
             <div class="superstar__content">
                 <h2 class="superstar__title">Superstar SEO</h2>
@@ -24,8 +25,8 @@
                 <a href="#" class="btn superstar__btn">Learn More</a>
             </div>
         </div>
-    </div>
-    <div class="reviews swiper">
+    </section>
+    <section class="reviews swiper">
         <div class="reviews__top">
             <h2 class="reviews__title">What My <span class="text-green">Clients Say</span></h2>
             <div class="reviews__control">
@@ -56,47 +57,39 @@
             </div>
         </div>
         <div class="swiper-wrapper slider__list">
-            <div class="swiper-slide slider__item">
-                <div class="slider__img">
-                    <img src="img/slide-1.png" alt="slide">
+
+            <?php $reviews = new WP_Query( array(
+				'post_type' => 'reviews',
+				'posts_per_page' => -1, 
+			));
+
+            if ( $reviews->have_posts() ) :
+
+                while ( $reviews->have_posts() ) : $reviews->the_post();
+
+            ?>
+                <div class="swiper-slide slider__item">
+                    <div class="slider__img">
+                        <img src="img/slide-1.png" alt="slide">
+                    </div>
+                    <div class="slider__content">
+                        <p class="slider__text">
+                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim.“
+                        </p>
+                        <p class="slider__name">Frank Hardy</p>
+                        <p class="slider__position">Your Marketing Crew CEO</p>
+                    </div>
                 </div>
-                <div class="slider__content">
-                    <p class="slider__text">
-                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim.“
-                    </p>
-                    <p class="slider__name">Frank Hardy</p>
-                    <p class="slider__position">Your Marketing Crew CEO</p>
-                </div>
-            </div>
-            <div class="swiper-slide slider__item">
-                <div class="slider__img">
-                    <img src="img/slide-2.png" alt="slide">
-                </div>
-                <div class="slider__content">
-                    <p class="slider__text">
-                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim.“
-                    </p>
-                    <p class="slider__name">Frank Hardy 2</p>
-                    <p class="slider__position">Your Marketing Crew CEO</p>
-                </div>
-            </div>
-            <div class="swiper-slide slider__item">
-                <div class="slider__img">
-                    <img src="img/slide-3.png" alt="slide">
-                </div>
-                <div class="slider__content">
-                    <p class="slider__text">
-                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim.“
-                    </p>
-                    <p class="slider__name">Frank Hardy 3</p>
-                    <p class="slider__position">Your Marketing Crew CEO</p>
-                </div>
-            </div>
+            <?php endwhile;
+                wp_reset_postdata();
+                endif;
+            ?>
+
         </div>
         <div class="swiper-scrollbar"></div>
         <div class="swiper-pagination"></div>
-    </div>
-    <div class="shape">
+    </section>
+    <section class="shape">
         <div class="container shape__container">
             <div class="shape__content">
                 <h2 class="shape__title">Get in Touch</h2>
@@ -114,6 +107,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </section>
+</main>
         
 <?php get_footer();

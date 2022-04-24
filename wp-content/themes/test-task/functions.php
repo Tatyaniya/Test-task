@@ -12,9 +12,13 @@ function tt_scripts() {
 }
 
 register_nav_menus( array(
-    'menu-header'   => 'Header menu',
+    'menu-header' => 'Header menu',
     'menu-footer' => 'Footer menu',
 ) );
+
+add_theme_support( 'post-thumbnails' );
+
+add_action( 'after_setup_theme', 'tt_custom_logo_setup' );
 
 function tt_custom_logo_setup() {
     $defaults = array(
@@ -28,24 +32,40 @@ function tt_custom_logo_setup() {
 
     add_theme_support( 'custom-logo', $defaults );
 }
-add_action( 'after_setup_theme', 'tt_custom_logo_setup' );
 
 register_sidebar( array(
     'name'          => 'Footer Widget',
-    'id'            => 'tt_sidebar',
-    'description'   => 'Footer',
+    'id'            => 'tt_footer',
+    'description'   => 'Footer section',
     'before_widget' => '<div class="tt-footer-widget">',
     'after_widget'  => '</div>',
     'before_title'  => '<h2>',
     'after_title'   => '</h2>',
 ) );
 
-register_sidebar( array(
-    'name'          => 'Footer Widget 2',
-    'id'            => 'footer',
-    'description'   => 'Footer section',
-    'before_widget' => '<div class="mk-footer-widget">',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h2>',
-    'after_title'   => '</h2>',
-) );
+add_action( 'init', 'tt_register_types' );
+
+function tt_register_types() {
+    register_post_type( 'reviews', [
+        'labels' => [
+            'name'               => __( 'Reviews', 'test-task' ),
+            'singular_name'      => __( 'Reviews', 'test-task' ),
+            'add_new'            => __( 'Add review', 'test-task' ),
+            'add_new_item'       => __( 'Add new review', 'test-task' ),
+            'edit_item'          => __( 'Edit reviews', 'test-task' ),
+            'new_item'           => __( 'New reviews', 'test-task' ),
+            'view_item'          => __( 'View reviews', 'test-task' ),
+            'search_items'       => __( 'Search reviews', 'test-task' ),
+            'not_found'          => __( 'Not fount reviews', 'test-task' ),
+            'not_found_in_trash' => __( 'Not found review in trash reviews', 'test-task' ),
+            'menu_name'          => __( 'Reviews', 'test-task' ),
+        ],
+        'public'              => true,
+        'menu_position'       => 20,
+        'menu_icon'           => 'dashicons-admin-users',
+        'hierarchical'        => false,
+        'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt' ],
+        'taxonomies'          => [],
+        'has_archive'         => true,
+    ]);
+}

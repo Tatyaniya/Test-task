@@ -161,7 +161,13 @@ h2 {
     height: 40px;
 }
 
-.menu__list {
+.menu-footer-menu-container {
+    display: flex;
+    justify-content: center;
+}
+
+.menu__list,
+#menu-footer-menu {
     display: flex;
 }
 
