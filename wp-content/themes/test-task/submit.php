@@ -18,7 +18,6 @@ if ( isset( $_POST['name']) && isset( $_POST['email']) && isset( $_POST['message
     );
 
     $message_to_email = "
-        <br><br>
         Name: $name<br>
         E-mail: $email<br>
         Message: $message<br>
