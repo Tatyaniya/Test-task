@@ -526,14 +526,12 @@ h2 {
     height: 2px;
 }
 
-.swiper-scrollbar .swiper-scrollbar-drag {
-    width: 33% !important;
-}
-
-.swiper-pagination {
-    font-size: 0;
+.swiper-pagination,
+.swiper-count-slide {
+    position: absolute;
     width: 60%;
     left: 50%;
+    bottom: 106px;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -541,13 +539,8 @@ h2 {
     -o-transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
-    bottom: 106px;
-}
-
-.swiper-pagination-current,
-.swiper-pagination-total {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 600;  
 }
 
 .shape {

@@ -93,6 +93,10 @@
         </div>
         <div class="swiper-scrollbar"></div>
         <div class="swiper-pagination"></div>
+        <div class="swiper-count-slide">
+            <span class="swiper-count-active"></span>
+            <span class="swiper-count-total"></span>
+        </div>
     </section>
     <section class="shape">
         <div class="container shape__container">
