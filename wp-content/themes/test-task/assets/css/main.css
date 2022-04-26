@@ -461,16 +461,20 @@ h2 {
     margin: 0 auto;
 }
 
-.slider__video {
-    width: 48%;
-    height: 340px;    
+.slider__video-wrapper {
+    width: 550px;
     position: relative;
-    display: flex;
-    flex-direction: column;
+    border-radius: 13px;
+    -webkit-border-radius: 13px;
+    -moz-border-radius: 13px;
+    -ms-border-radius: 13px;
+    -o-border-radius: 13px;
+    overflow: hidden;
+    margin-right: 30px;
 }
 
-.slider__video:after {
-    content: "";
+.slider__video-overlay {
+    display: block;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -478,14 +482,29 @@ h2 {
     left: 0;
     background: url('../img/play.svg') no-repeat center;
     opacity: 0.8;
+    z-index: 45;
+    cursor: pointer;
 }
 
-.mejs-overlay .mejs-overlay-button {
-    width: 71px;
-    height: 71px;
-    background-image: url('../img/play.svg');
+.slider__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.8;
+    background-size: cover;
+    background-color: #F5F9FA;
+    z-index: 30;
+}
+
+.display-none {
+    display: none;
+}
+
+iframe {
+    display: block;
 }
 
 .slider__content {
@@ -526,12 +545,11 @@ h2 {
     height: 2px;
 }
 
-.swiper-pagination,
 .swiper-count-slide {
     position: absolute;
     width: 60%;
     left: 50%;
-    bottom: 106px;
+    bottom: 104px;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -774,9 +792,9 @@ textarea.valid {
         display: none;
     }
     .swiper-horizontal>.swiper-scrollbar {
-        width: 91%;
+        width: 89%;
     }
-    .swiper-pagination {
+    .swiper-count-slide {
         width: 95%;
     }
 }
@@ -855,9 +873,12 @@ textarea.valid {
         flex-direction: column;
         height: auto;
     }
-    .slider__video,
+    .slider__video-wrapper {
+        margin-bottom: 25px;
+    }
     .slider__content {
-        width: 100%;        
+        width: 100%;
+        text-align: center;       
     }
     .swiper-horizontal>.swiper-scrollbar {
         width: 88%;

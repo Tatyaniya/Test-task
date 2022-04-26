@@ -40,6 +40,11 @@ $(document).ready(function() {
 
     slideChange();
 
+    $('.slider__video-wrapper').on( 'click', function(e) {
+        $(this).find('.slider__poster').addClass('display-none');
+        $(this).find('.slider__video-overlay').addClass('display-none');
+    });
+
     $('[data-submit]').on('click', function(e) {
         e.preventDefault();
         $(this).parent('form').submit();

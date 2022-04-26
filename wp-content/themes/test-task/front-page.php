@@ -66,16 +66,41 @@
                                     
                     $attr =  array(
                         'src'      => get_field('video_link'),
-                        'poster'   => get_the_post_thumbnail_url(),
                         'preload'  => 'auto',
-                        'width'    => 550,
-                        'height'   => 340,
-                    );                    
+                    );
+                    
+                    $iframe = get_field('video_link');
+
+                    if (  $iframe ) {
+                        preg_match('/src="(.+?)"/', $iframe, $matches);
+                        $src = $matches[1];
+
+                        $params = array(
+                            'controls'  => 0,
+                            'hd'        => 1,
+                            'autohide'  => 1,
+                            'width'     => 540,
+                            'height'    => 340,
+                        );
+                        $new_src = add_query_arg($params, $src);
+                        $iframe = str_replace($src, $new_src, $iframe);
+
+                        $attributes = 'frameborder="0"';
+                        $iframe = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
+                    }
 
             ?>
                 <div class="swiper-slide slider__item">
-                    <div class="slider__img">
-                        <?php echo wp_video_shortcode( $attr ); ?>
+                    <div class="slider__video-wrapper">
+                        <span class="slider__video-overlay"></span>
+                        <div class="slider__poster" style="background-image:url('<?php echo get_the_post_thumbnail_url(); ?>');" ?></div>
+                        <div class="slider__video">
+                            <?php 
+                                if ( $iframe ) {
+                                    echo $iframe;
+                                }
+                            ?>
+                        </div>
                     </div>
                     <div class="slider__content">
                         <p class="slider__text">

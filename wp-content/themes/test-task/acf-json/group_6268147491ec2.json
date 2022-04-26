@@ -6,20 +6,17 @@
             "key": "field_6268147cd58b1",
             "label": "Video link",
             "name": "video_link",
-            "type": "file",
+            "type": "oembed",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "url",
-            "library": "all",
-            "min_size": "",
-            "max_size": "",
-            "mime_types": ""
+            "width": 550,
+            "height": 400
         }
     ],
     "location": [
@@ -40,5 +37,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1650990198
+    "modified": 1651005755
 }
