@@ -12,7 +12,7 @@ function tt_scripts() {
     // Deregister core jQuery
     wp_deregister_script('jquery');
     // Register
-    wp_register_script('jquery','http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', true);
+    wp_register_script('jquery','https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', true);
 	wp_enqueue_script( 'jquery');
     wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper@8/swiper-bundle.min.js', array(), null, true );
     wp_enqueue_script( 'aspnet', get_template_directory_uri() . '/assets/js/aspnet.js', array( 'jquery' ), 1.0, true );
@@ -110,3 +110,12 @@ add_filter( 'wp_mail_content_type', 'filter_content_type' );
 function filter_content_type( $content_type ){
 	return 'text/html';
 }
+
+// Delete tag p in ACF Wysiwyg Editor
+function my_acf_add_local_field_groups() {
+    remove_filter('acf_the_content', 'wpautop' );
+}
+add_action('acf/init', 'my_acf_add_local_field_groups');
+
+// Delete class .wp-container-id
+remove_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );

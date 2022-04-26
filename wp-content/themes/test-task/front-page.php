@@ -6,7 +6,9 @@
             <div class="hero__offer">
                 <?php the_content(); ?>
             </div>
-            <div class="hero__img" style="background-image: url( '<?php echo get_the_post_thumbnail_url() ?>' )"></div>
+            <div class="hero__img">
+                <?php the_post_thumbnail(); ?>
+            </div>
         </div>
     </section>
     <section class="superstar">
@@ -22,7 +24,7 @@
     </section>
     <section class="reviews swiper">
         <div class="reviews__top">
-            <h2 class="reviews__title">What My <span class="text-green">Clients Say</span></h2>
+            <h2 class="reviews__title"><?php the_field( 'reviews__title' ); ?></h2>
             <div class="reviews__control">
                 <div class="swiper-button-prev swiper-button-count">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

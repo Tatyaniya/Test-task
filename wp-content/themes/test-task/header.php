@@ -11,7 +11,7 @@
     <div class="wrapper">
         <header class="header">
             <div class="container header__container">
-                <div class="logo header__logo" style="width:180px;height:40px;">
+                <div class="logo header__logo">
                     <?php the_custom_logo(); ?>
                 </div>
                 <?php
@@ -29,7 +29,7 @@
                             'link_before'     => '',
                             'link_after'      => '',
                             'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
-                            'depth'           => 3,
+                            'depth'           => 0,
                             'walker'          => '',
                         ] );
                     }
