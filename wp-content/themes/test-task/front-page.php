@@ -63,11 +63,19 @@
             if ( $reviews->have_posts() ) :
 
                 while ( $reviews->have_posts() ) : $reviews->the_post();
+                                    
+                    $attr =  array(
+                        'src'      => get_field('video_link'),
+                        'poster'   => get_the_post_thumbnail_url(),
+                        'preload'  => 'auto',
+                        'width'    => 550,
+                        'height'   => 340,
+                    );                    
 
             ?>
                 <div class="swiper-slide slider__item">
                     <div class="slider__img">
-                        <?php the_post_thumbnail(); ?>
+                        <?php echo wp_video_shortcode( $attr ); ?>
                     </div>
                     <div class="slider__content">
                         <p class="slider__text">
