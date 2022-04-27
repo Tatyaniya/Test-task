@@ -875,6 +875,7 @@ textarea.valid {
     }
     .slider__video-wrapper {
         margin-bottom: 25px;
+        margin-right: 0;
     }
     .slider__content {
         width: 100%;
